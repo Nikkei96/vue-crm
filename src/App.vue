@@ -1,17 +1,26 @@
 <template>
   <div id='app'>
-    <router-view />
-    <button class='btn'>-</button>
+    <router-view :is='layout' />
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  components: {},
+
+  components: {
+    EmptyLayout: () => import('@/layouts/EmptyLayout.vue'),
+    MainLayout: () => import('@/layouts/MainLayout.vue'),
+  },
+
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || 'empty') + '-layout'
+    },
+  },
 
   mounted() {
-    console.log(process.env)
+    // console.log(process.env)
   },
 }
 </script>
