@@ -1,6 +1,8 @@
 <template>
   <div id='app'>
-    <router-view :is='layout' />
+    <component :is='layout'>
+      <router-view />
+    </component>
   </div>
 </template>
 
@@ -15,12 +17,8 @@ export default {
 
   computed: {
     layout() {
-      return (this.$route.meta.layout || 'empty') + '-layout'
+      return (this.$route.meta.layout || 'empty').capitalize() + 'Layout'
     },
-  },
-
-  mounted() {
-    // console.log(process.env)
   },
 }
 </script>

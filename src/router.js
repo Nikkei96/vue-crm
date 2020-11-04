@@ -1,10 +1,9 @@
-// router
-
 import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
 
+// массив путей, который будет свойством в классе new Router()
 const routes = [
   {
     path: '/',
@@ -62,6 +61,7 @@ const routes = [
   },
 ]
 
+// экспортируем этот класс со свойствами
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
