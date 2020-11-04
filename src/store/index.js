@@ -6,10 +6,20 @@ Vue.use(Vuex)
 
 // экспортируем класс с основными свойствами и модулями
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  getters: {},
+  state: {
+    error: null,
+  },
+  mutations: {
+    setError(state, error) {
+      state.error = error
+    },
+    clearError(state) {
+      state.error = null
+    }
+  },
+  getters: {
+    error: state => state.error
+  },
 
   modules: {
     auth

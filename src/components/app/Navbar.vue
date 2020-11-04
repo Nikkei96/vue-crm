@@ -48,8 +48,8 @@ export default {
   }),
 
   methods: {
-    logout() {
-      console.log('Logout')
+    async logout() {
+      await this.$store.dispatch('logout')
       this.$router.push('/login?message=logout')
     },
   },
@@ -65,7 +65,6 @@ export default {
   },
 
   beforeDestroy() {
-    console.log('destr')
     clearInterval(this.interval)
 
     if (this.dropdown && this.dropdown.destroy) {
