@@ -9,8 +9,11 @@ import router from './router'
 import store from './store'
 // собственный фильтр для даты
 import dateFilter from './filters/date.filter'
+// собственный фильтр для валюты
+import currencyFilter from './filters/currency.filter'
 // собственный плагин для сообщений через M.toast()
 import messagePlugin from './plugins/message.plugin'
+import Loader from './components/app/Loader'
 // минифицированнный js-файл materialize
 import 'materialize-css/dist/js/materialize.min.js'
 // firebase from google
@@ -23,10 +26,13 @@ Vue.config.productionTip = false
 
 // глобальная регистрация фильтра
 Vue.filter('dateFilter', dateFilter)
+Vue.filter('currencyFilter', currencyFilter)
 
 // используем во Vue
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
+
+Vue.component('Loader', Loader)
 
 // инициализация БД
 const firebaseConfig = {
