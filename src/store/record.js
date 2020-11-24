@@ -10,6 +10,17 @@ export default {
         ctx.commit('setError', e)
         throw e
       }
+    },
+
+    async fetchRecords(ctx) {
+      try {
+        const uid = await ctx.dispatch('getUid')
+        const records = (await firebase.database().ref(`/users/${uid}/records`).once('value')).val() || {}
+        return Object.keys(records).map(key => ({ ...records[key], id: key }))
+      } catch (e) {
+        ctx.commit('setError', e)
+        throw e
+      }
     }
   }
 }

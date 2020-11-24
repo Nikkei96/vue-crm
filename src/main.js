@@ -7,6 +7,7 @@ import App from './App.vue'
 import router from './router'
 // класс new Vuex.Store() - хранилище из папки store (в ней index.js, поэтому можем не писать название файла)
 import store from './store'
+import tooltipDirective from './directives/tooltip.directive'
 // собственный фильтр для даты
 import dateFilter from './filters/date.filter'
 // собственный фильтр для валюты
@@ -31,6 +32,8 @@ Vue.filter('currencyFilter', currencyFilter)
 // используем во Vue
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
+
+Vue.directive('tooltip', tooltipDirective)
 
 Vue.component('Loader', Loader)
 
