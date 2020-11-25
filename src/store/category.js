@@ -28,6 +28,17 @@ export default {
       }
     },
 
+    async fetchCategoryById(ctx, id) {
+      try {
+        const uid = await ctx.dispatch('getUid')
+        const category = (await firebase.database().ref(`/users/${uid}/categories`).child(id).once('value')).val() || {}
+        return { ...category, id }
+      } catch (e) {
+        ctx.commit('setError', e)
+        throw e
+      }
+    },
+
     async updateCategory(ctx, { id, title, limit }) {
       try {
         const uid = await ctx.dispatch('getUid')
