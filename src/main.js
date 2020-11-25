@@ -1,6 +1,7 @@
 import Vue from 'vue'
 // библиотека для валидации форм
 import Vuelidate from 'vuelidate'
+import Paginate from 'vuejs-paginate'
 // главная точка входа, куда будет маунтиться все данные vue
 import App from './App.vue'
 // класс new Router(), который инициализирован с массивом путей (routes) и хистори модом
@@ -36,6 +37,7 @@ Vue.use(messagePlugin)
 Vue.directive('tooltip', tooltipDirective)
 
 Vue.component('Loader', Loader)
+Vue.component('Paginate', Paginate)
 
 // инициализация БД
 const firebaseConfig = {
