@@ -1,6 +1,7 @@
 import Vue from 'vue'
 // библиотека для валидации форм
 import Vuelidate from 'vuelidate'
+// пагинация
 import Paginate from 'vuejs-paginate'
 // главная точка входа, куда будет маунтиться все данные vue
 import App from './App.vue'
@@ -8,13 +9,17 @@ import App from './App.vue'
 import router from './router'
 // класс new Vuex.Store() - хранилище из папки store (в ней index.js, поэтому можем не писать название файла)
 import store from './store'
+// кастомная директива для тултипа
 import tooltipDirective from './directives/tooltip.directive'
 // собственный фильтр для даты
 import dateFilter from './filters/date.filter'
 // собственный фильтр для валюты
 import currencyFilter from './filters/currency.filter'
+// фильтр локализации
+import localizeFilter from './filters/localize.filter'
 // собственный плагин для сообщений через M.toast()
 import messagePlugin from './plugins/message.plugin'
+// Компонент лоадера
 import Loader from './components/app/Loader'
 // минифицированнный js-файл materialize
 import 'materialize-css/dist/js/materialize.min.js'
@@ -29,13 +34,16 @@ Vue.config.productionTip = false
 // глобальная регистрация фильтра
 Vue.filter('dateFilter', dateFilter)
 Vue.filter('currencyFilter', currencyFilter)
+Vue.filter('localizeFilter', localizeFilter)
 
 // используем во Vue
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
 
+// регистрация директивы
 Vue.directive('tooltip', tooltipDirective)
 
+// регистрация компоненты
 Vue.component('Loader', Loader)
 Vue.component('Paginate', Paginate)
 

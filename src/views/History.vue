@@ -49,6 +49,32 @@ export default {
   }),
 
   methods: {
+    setChartColors(categories) {
+      const goodColors = [
+        '82, 190, 128',
+        '223, 255, 0',
+        '255, 191, 0',
+        '255, 127, 80',
+        '222, 49, 99',
+        '159, 226, 191',
+        '64, 224, 208',
+        '100, 149, 237',
+        '204, 204, 255',
+      ]
+      let backgroundColor = []
+      let borderColor = []
+      for (let i = 0; i < categories.length; i++) {
+        let color = `rgba(${goodColors[i]}`
+        backgroundColor.push(color + ', 1)')
+        borderColor.push(color + ', 0.2)')
+      }
+
+      return {
+        backgroundColor,
+        borderColor,
+      }
+    },
+
     async setup(categories) {
       this.setupPagination(
         this.records.map(record => ({
@@ -59,7 +85,7 @@ export default {
           typeText: record.type === 'income' ? 'Доход' : 'Расход',
         }))
       )
-
+      const chartColor = this.setChartColors(categories)
       this.renderChart({
         labels: categories.map(c => c.title),
         datasets: [
@@ -73,22 +99,8 @@ export default {
                 return total
               }, 0)
             }),
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-            ],
+            backgroundColor: chartColor.backgroundColor,
+            borderColor: chartColor.borderColor,
             borderWidth: 1,
           },
         ],

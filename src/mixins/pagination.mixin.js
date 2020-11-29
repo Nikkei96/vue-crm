@@ -17,7 +17,7 @@ export default {
       this.items = this.allItems[page - 1] || this.allItems[0]
     },
     setupPagination(allItems) {
-      this.allItems = _.chunk(allItems, this.pageSize)
+      this.allItems = _.chunk(allItems.reverse(), this.pageSize)
       this.pageCount = _.size(this.allItems)
       this.items = this.allItems[this.page - 1] || this.allItems[0]
     }

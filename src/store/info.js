@@ -17,7 +17,6 @@ export default {
       try {
         const uid = await ctx.dispatch('getUid')
         const updateData = { ...ctx.getters.info, ...updInfo }
-        console.log(updateData)
         await firebase.database().ref(`/users/${uid}/info`).update(updateData)
         ctx.commit('setInfo', updateData)
       } catch (e) {

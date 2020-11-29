@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import localizeFilter from '@/filters/localize.filter'
+
 export default {
   props: {
     isOpen: {
@@ -23,11 +25,11 @@ export default {
   },
   data: () => ({
     links: [
-      { name: 'Счёт', path: '/', exact: true },
-      { name: 'История', path: '/history' },
-      { name: 'Планирование', path: '/planning' },
-      { name: 'Новая запись', path: '/record' },
-      { name: 'Категории', path: '/categories' },
+      { name: localizeFilter('Menu_Bill'), path: '/', exact: true },
+      { name: localizeFilter('Menu_History'), path: '/history' },
+      { name: localizeFilter('Menu_Planning'), path: '/planning' },
+      { name: localizeFilter('Menu_NewRecord'), path: '/record' },
+      { name: localizeFilter('Menu_Categories'), path: '/categories' },
     ],
   }),
 }
