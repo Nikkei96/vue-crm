@@ -40,6 +40,12 @@
 
 <script>
 export default {
+  metaInfo() {
+    return {
+      title: this.$title('Menu_Detail'),
+    }
+  },
+
   data: () => ({
     record: null,
     loading: true,

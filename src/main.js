@@ -1,6 +1,8 @@
 import Vue from 'vue'
 // библиотека для валидации форм
 import Vuelidate from 'vuelidate'
+//meta
+import VueMeta from 'vue-meta'
 // пагинация
 import Paginate from 'vuejs-paginate'
 // главная точка входа, куда будет маунтиться все данные vue
@@ -19,6 +21,8 @@ import currencyFilter from './filters/currency.filter'
 import localizeFilter from './filters/localize.filter'
 // собственный плагин для сообщений через M.toast()
 import messagePlugin from './plugins/message.plugin'
+// собственный плагин для тайтлов страницы (во вкладке браузера)
+import titlePlugin from './plugins/title.plugin'
 // Компонент лоадера
 import Loader from './components/app/Loader'
 // минифицированнный js-файл materialize
@@ -39,6 +43,8 @@ Vue.filter('localizeFilter', localizeFilter)
 // используем во Vue
 Vue.use(Vuelidate)
 Vue.use(messagePlugin)
+Vue.use(titlePlugin)
+Vue.use(VueMeta)
 
 // регистрация директивы
 Vue.directive('tooltip', tooltipDirective)

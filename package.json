@@ -13,6 +13,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
+    "vue-meta": "^2.4.0",
     "vue-router": "^3.4.8",
     "vuejs-paginate": "^2.1.0",
     "vuelidate": "^0.7.6",

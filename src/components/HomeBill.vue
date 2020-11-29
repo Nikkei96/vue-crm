@@ -3,12 +3,7 @@
     <div class='card light-blue bill-card'>
       <div class='card-content white-text'>
         <span class='card-title'>Счет в валюте</span>
-
-        <p
-          class='currency-line'
-          v-for='c of Object.keys(rates).reverse()'
-          :key='c'
-        >
+        <p class='currency-line' v-for='c of Object.keys(rates)' :key='c'>
           <span>{{getCurrency(c) | currencyFilter(c)}}</span>
         </p>
       </div>
@@ -22,7 +17,7 @@ export default {
 
   computed: {
     base() {
-      return this.$store.getters.info.bill / this.rates['RUB']
+      return this.$store.getters.info.bill
     },
   },
 

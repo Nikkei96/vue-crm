@@ -17,7 +17,7 @@
           <tbody>
             <tr v-for='c of Object.keys(rates).reverse()' :key='c'>
               <td>{{ c }}</td>
-              <td>{{ rates[c].toFixed(2) }}</td>
+              <td>{{ (1 / rates[c]).toFixed(2) }}</td>
               <td>{{ date | dateFilter('date')}}</td>
             </tr>
           </tbody>

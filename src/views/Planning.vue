@@ -44,6 +44,12 @@ export default {
     categories: [],
   }),
 
+  metaInfo() {
+    return {
+      title: this.$title('Menu_Planning'),
+    }
+  },
+
   computed: {
     ...mapGetters(['info']),
   },

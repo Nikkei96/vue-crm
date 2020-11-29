@@ -33,14 +33,20 @@
 
 <script>
 import paginationMixin from '@/mixins/pagination.mixin'
-import { Pie } from 'vue-chartjs'
+import { Doughnut } from 'vue-chartjs'
 
 export default {
   name: 'history',
-  extends: Pie,
+  extends: Doughnut,
   mixins: [paginationMixin],
   components: {
     HistoryTable: () => import('@/components/HistoryTable'),
+  },
+
+  metaInfo() {
+    return {
+      title: this.$title('Menu_History'),
+    }
   },
 
   data: () => ({
@@ -85,12 +91,12 @@ export default {
           typeText: record.type === 'income' ? 'Доход' : 'Расход',
         }))
       )
+
       const chartColor = this.setChartColors(categories)
       this.renderChart({
         labels: categories.map(c => c.title),
         datasets: [
           {
-            label: 'Расходы по категориям',
             data: categories.map(cat => {
               return this.records.reduce((total, r) => {
                 if (r.categoryId === cat.id && r.type === 'outcome') {
